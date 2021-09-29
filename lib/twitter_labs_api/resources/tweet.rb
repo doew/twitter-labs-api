@@ -11,7 +11,7 @@ module TwitterLabsAPI
       #     e.g.: { tweet: %w[id username], media: %w[url] }
       # @return Hash an object with requested tweet fields
       def get_tweet(id:, fields: DEFAULT_FIELDS)
-        url = "https://api.twitter.com/labs/2/tweets/#{id}"
+        url = "https://api.twitter.com/2/tweets/#{id}"
         params = ParamsService.from_fields(fields)
 
         make_request(url: url, params: params)
@@ -24,7 +24,7 @@ module TwitterLabsAPI
       #     e.g.: { tweet: %w[id username], media: %w[url] }
       # @return [Array<Hash>] of tweet objects with the requested tweet fields
       def get_tweets(ids:, fields: DEFAULT_FIELDS)
-        url = 'https://api.twitter.com/labs/2/tweets'
+        url = 'https://api.twitter.com/2/tweets'
         params = ParamsService.from_fields(fields)
         params.merge!({ ids: ids.join(',') })
 
@@ -35,7 +35,7 @@ module TwitterLabsAPI
       # @param [String] :id the ID of the requested Tweet; must belong to a conversation by the authenticated user
       # @return boolean indicating the hidden status of the requested tweet
       def hide_reply(id:)
-        url = "https://api.twitter.com/labs/2/tweets/#{id}/hidden"
+        url = "https://api.twitter.com/2/tweets/#{id}/hidden"
 
         make_request(url: url, method: :put)[:hidden]
       end
