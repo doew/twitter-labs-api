@@ -47,7 +47,7 @@ module TwitterLabsAPI
       #     e.g.: { tweet: %w[id username], media: %w[url] }
       # @return [Array<Hash>] of tweet objects with the requested tweet fields
       def search(query:, fields: DEFAULT_FIELDS)
-        url = 'https://api.twitter.com/2/tweets/search/all'
+        url = 'https://api.twitter.com/2/tweets/search/recent'
         params = ParamsService.from_fields(fields)
         params.merge!({ query: query })
 
