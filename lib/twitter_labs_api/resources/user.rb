@@ -11,7 +11,7 @@ module TwitterLabsAPI
       #  e.g.: { user: %w[id name username] }
       # @return Hash an object with requested user fields
       def get_user(id:, fields: DEFAULT_FIELDS)
-        url = "https://api.twitter.com/labs/2/users/#{id}"
+        url = "https://api.twitter.com/2/users/#{id}"
         params = ParamsService.from_fields(fields)
 
         make_request(url: url, params: params)
@@ -24,7 +24,7 @@ module TwitterLabsAPI
       #  e.g.: { user: %w[id name username] }
       # @return [Array<Hash>] of user objects with the requested user fields
       def get_users(ids:, fields: DEFAULT_FIELDS)
-        url = 'https://api.twitter.com/labs/2/users'
+        url = 'https://api.twitter.com/2/users'
         params = ParamsService.from_fields(fields)
         params.merge!({ ids: ids.join(',') })
 
@@ -38,7 +38,7 @@ module TwitterLabsAPI
       #  e.g.: { user: %w[id name username] }
       # @return [Array<Hash>] of user objects with the requested user fields
       def get_users_by_usernames(usernames:, fields: DEFAULT_FIELDS)
-        url = 'https://api.twitter.com/labs/2/users/by'
+        url = 'https://api.twitter.com/2/users/by'
         params = ParamsService.from_fields(fields)
         params.merge!({ usernames: usernames.join(',') })
 
